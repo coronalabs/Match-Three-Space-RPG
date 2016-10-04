@@ -1,4 +1,4 @@
--- health bar module
+-- heart bar module
 
 -- define module
 local M = {}
@@ -44,7 +44,7 @@ function M.new(options)
   function group:finalize()
     -- on remove cleanup instance 
   end
-  group:addEventListener('finalize', finalize)
+  group:addEventListener('finalize')
 
 -- return insantnce
   return group

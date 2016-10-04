@@ -19,7 +19,6 @@ function M.new(listener, options)
   -- make a new three match board
   options = options or {}
 
-  local x,y = options.x, options.y
   local rows = options.rows or 5
   local cols = options.cols or 6
   local width = options.width or (display.actualContentWidth / cols) - 6
@@ -27,7 +26,6 @@ function M.new(listener, options)
   local colors = options.colors or { {1,0,0}, {1,1,0}, {0,0,1}, {1,0,1}, {0,1,1}, {0,1,0} }
   local subDir = options.subDir or "scene/game/img/tokens/"
   local boardImage = options.boardImage or "darkCrate.png"
-  local background = options.background or {0,0,0,1}
   local images = options.images or { "spaceCrate.png", "spaceMonster.png", "spaceKey.png", "spaceGlove.png", "spaceGun.png" }
   local imageWidth = options.imageWidth or width * 0.95
   local imageHeight = options.imageHeight or height * 0.95 
@@ -405,7 +403,8 @@ function M.new(listener, options)
       board.timer[i]=nil 
     end
   end
-  board:addEventListener('finalize', finalize)
+  
+  board:addEventListener('finalize')
 
   -- add the pieces
   board:replunish()

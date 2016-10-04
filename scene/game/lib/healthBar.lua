@@ -53,7 +53,7 @@ function M.new(options)
     -- on remove cleanup instance 
 
   end
-  group:addEventListener('finalize', finalize)
+  group:addEventListener('finalize')
   group:damage(0,0)
 
 -- return insantnce
