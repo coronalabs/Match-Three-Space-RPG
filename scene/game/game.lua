@@ -50,11 +50,12 @@ function scene:create( event )
     if phase == "matched" then
       if image == "" then 
       elseif image == "spaceKey.png" and not hallway.moving and not (alien and alien.alive) then
+        score:add(1500)
+        -- I collected the key before the crate, so abandon crate
         if crate and crate.collect then
           crate:explode()
-        end
-        score:add(1500)
-        nextLevel()
+        end      
+        nextLevel()      
       elseif image == "spaceGlove.png" or image == "spaceGun.png" then
         if alien and alien.hurt then 
           alien:hurt()

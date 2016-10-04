@@ -18,8 +18,10 @@ function M.new()
   -- adjust it's hue
   instance.hue = math.random(360)  
   local function tint()
-    instance.img.fill.effect = "filter.hue"
-    instance.img.fill.effect.angle = instance.hue
+    if instance and instance.img and instance.img.fill then
+      instance.img.fill.effect = "filter.hue"
+      instance.img.fill.effect.angle = instance.hue
+    end
   end
   tint()
 
