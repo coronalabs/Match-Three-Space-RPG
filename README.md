@@ -1,13 +1,15 @@
 # Match Three Space RPG (MTSRPG)
 
+(https://raw.githubusercontent.com/coronalabs/-psychic-rotary-phone/master/screenshot.png)
+
 This is a demo project for the Corona SDK utilizing module-based game development. It includes free-to-use modules for common game functions including:
 
 * Match Three Engine Module
 * First Person Hallway Module
 * RPG Enemy / Item modules
 * Score counter
-* Health Bar / Heart Bar modules 
-* Game FX package (ponyfx.lua) 
+* Health Bar / Heart Bar modules
+* Game FX package (ponyfx.lua)
 
 This package also comes with CC0 licensed game art resources including
 
