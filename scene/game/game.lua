@@ -39,7 +39,7 @@ function scene:create( event )
     hallway.x, hallway.y = x,y
 
     -- add an item or enemy
-    local rnd = math.random(1)
+    local rnd = math.random(3)
     if rnd == 1 then 
       alien = monster.new() 
       alien.x, alien.y = x, y
