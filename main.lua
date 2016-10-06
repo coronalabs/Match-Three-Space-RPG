@@ -1,6 +1,12 @@
 local composer = require( "composer" )
 local isSimulator = "simulator" == system.getInfo("environment")
-local platform = system.getInfo( "platformName" )
+
+--   _____      __            
+--  / ___/___  / /___  ______ 
+--  \__ \/ _ \/ __/ / / / __ \
+-- ___/ /  __/ /_/ /_/ / /_/ /
+--/____/\___/\__/\__,_/ .___/ 
+--                   /_/      
 
 display.setStatusBar( display.HiddenStatusBar ) -- removes status bar on iOS
 
@@ -11,45 +17,10 @@ if system.getInfo("androidApiLevel") and (system.getInfo("androidApiLevel") < 19
   native.setProperty( "androidSystemUiVisibility", "immersiveSticky" ) 
 end
 
--- The default magnification sampling filter applied whenever an image is loaded by Corona.
--- Use "nearest" with a small content size to get a retro-pixel look
-display.setDefault( "magTextureFilter", "linear" )
-display.setDefault( "minTextureFilter", "linear" )
-
---  The default behavior for texture loading is to load the texture when the display
---  object is created or when the display object uses it. Setting this value to false
---  will delay loading of the texture to when the object appears on screen or to
---  when it becomes visible.
-display.setDefault( "preloadTextures", true )
-
--- Texture Wrap Keys
--- Other values are useful for patterns: "repeat", "mirroredRepeat"
-display.setDefault( "textureWrapX", "clampToEdge" )
-display.setDefault( "textureWrapY", "clampToEdge" )
-
--- Uncomment to turn on wireframe
---display.setDrawMode( "wireframe", true )
-
--- Set default anchor point
-display.setDefault( "anchorX", 0.5 )
-display.setDefault( "anchorY", 0.5 )
-
--- Set background color 
-display.setDefault( "background", 0/255, 0/255, 0/255)
-
--- Remove mouse pointer
---native.setProperty( "mouseCursorVisible", false )
-
 -- Keep session audio
 if audio.supportsSessionProperty == true then
   audio.setSessionProperty(audio.MixMode, audio.AmbientMixMode)
 end
-
--- Add multitouch
---system.activate( "multitouch" )
-
--- Randomize
-math.randomseed( os.time() ) 
 
 --  ___      _              
 -- |   \ ___| |__ _  _ __ _ 
@@ -87,7 +58,6 @@ if isSimulator then
   end
   Runtime:addEventListener("key", debugKeys)
 end
-
 
 --   ___
 --  / __|___ _ __  _ __  ___ ___ ___ _ _

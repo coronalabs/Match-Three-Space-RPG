@@ -11,7 +11,6 @@ function scene:show( event )
   if ( phase == "will" ) then
     composer.removeScene(prevScene)
   elseif ( phase == "did" ) then
-    collectgarbage()  
     composer.gotoScene(prevScene, options)      
   end
 end

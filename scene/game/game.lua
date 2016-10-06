@@ -168,8 +168,6 @@ function scene:destroy( event )
     audio.dispose( v )
     sounds[s] = nil
   end
-
-  collectgarbage()
 end
 
 scene:addEventListener("create")

@@ -33,7 +33,7 @@ function scene:hide( event )
 end
 
 function scene:destroy( event )
-  collectgarbage()
+  --collectgarbage()
 end
 
 scene:addEventListener("create")

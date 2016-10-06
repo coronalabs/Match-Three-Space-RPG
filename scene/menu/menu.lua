@@ -76,8 +76,8 @@ function scene:hide( event )
 end
 
 function scene:destroy( event )
+  audio.stop()
   audio.dispose(music)  
-  collectgarbage()
 end
 
 scene:addEventListener("create")
