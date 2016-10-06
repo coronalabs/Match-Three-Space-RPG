@@ -39,7 +39,7 @@ function scene:create( event )
     hallway.x, hallway.y = x,y
 
     -- add an item or enemy
-    local rnd = math.random(3)
+    local rnd = math.random(1)
     if rnd == 1 then 
       alien = monster.new() 
       alien.x, alien.y = x, y
@@ -85,7 +85,9 @@ function scene:create( event )
           audio.play(sounds.hit)        
           hallway:shake()
           fx.screenFlash({1,0,0})
-          print(heart:damage())
+          if heart:damage(4) == 0 then
+            composer.gotoScene("scene.menu.gameover", { effect = "slideDown" })
+          end
         else
           audio.play(sounds.alien)        
         end

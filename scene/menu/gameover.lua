@@ -29,7 +29,7 @@ function scene:create( event )
 
   local txt = { parent = sceneGroup,
     x=display.contentCenterX, y=100,
-    text="Match Three Space RPG",
+    text="Game Over",
     font="scene/menu/font/Dosis-Bold.ttf",
     fontSize=68 }
 
@@ -37,7 +37,7 @@ function scene:create( event )
 
   txt = { parent = sceneGroup,
     x=display.contentCenterX, y=220,
-    text="Tap/Click to Begin",
+    text="Tap/Click to Restart",
     font="scene/menu/font/Dosis-Bold.ttf",
     fontSize=52 }
 
@@ -62,6 +62,7 @@ function scene:show( event )
   if ( phase == "will" ) then
     Runtime:addEventListener("enterFrame", enterFrame)
   elseif ( phase == "did" ) then
+    composer.removeScene( "scene.game.game" )
     audio.play(music, { loops = -1, fadein = 750, channel = 16 } )
   end
 end
