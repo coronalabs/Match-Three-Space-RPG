@@ -1,7 +1,7 @@
 # Match Three Space RPG (MTSRPG)
 
 ![Game Screenshot]
-(https://raw.githubusercontent.com/coronalabs/-psychic-rotary-phone/master/screenshot.png)
+(https://raw.githubusercontent.com/coronalabs/-psychic-rotary-phone/master/screenshot.png?token=AAry0bB73I5oe33B3CDvjBE4OK9vcuMzks5X_8HkwA%3D%3D)
 
 This is a demo project for the Corona SDK utilizing module-based game development. It includes free-to-use modules for common game functions including:
 
