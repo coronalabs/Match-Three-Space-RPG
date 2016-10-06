@@ -42,13 +42,16 @@ function M.new()
   end
 
   function instance:die()
-    local function remove()
-      display.remove(instance)
+    if instance then 
       instance.alive = false
+      local function remove()
+        display.remove(instance)
+        instance = nil
+      end
+      transition.to(self.img, { time = 500, yScale = 0.01, xScale = 0.01, transition = easing.outQuad, 
+          onComplete = remove }
+      )
     end
-    transition.to(self.img, { time = 500, yScale = 0.01, xScale = 0.01, transition = easing.outQuad, 
-        onComplete = remove }
-    )
   end
 
   function instance:finalize()

@@ -96,4 +96,4 @@ end
 --                |_|
 
 -- Go to game screen
-composer.gotoScene( "scene.game.game", { params = { } })
+composer.gotoScene( "scene.menu.menu", { params = { } })

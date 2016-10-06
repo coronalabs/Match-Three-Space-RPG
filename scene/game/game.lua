@@ -10,11 +10,25 @@ local hearts = require "scene.game.lib.heartBar"
 
 -- Variables local to scene
 local scene = composer.newScene()
-local hallway, board, score, alien, crate, heart
+local hallway, board, score, alien, crate, heart, sounds
 
 
 function scene:create( event )
   local sceneGroup = self.view -- add display objects to this group
+
+  -- sounds
+  local sndDir = "scene/game/sfx/"
+  sounds = {
+    alien = audio.loadSound( sndDir .. "alien.wav" ),
+    beep = audio.loadSound( sndDir .. "beep.wav" ),
+    hit = audio.loadSound(  sndDir .. "hit.wav" ),
+    key = audio.loadSound(  sndDir .. "key.wav" ),
+    metal = audio.loadSound( sndDir .. "metal.wav" ),    
+    laser = audio.loadSound( sndDir .. "laser.wav" ),
+    select = audio.loadSound( sndDir .. "select.wav" ),
+    horror = audio.loadSound( sndDir .. "loops/horrorloop.ogg"  ),
+    wind = audio.loadSound( sndDir .. "loops/spacewind.ogg" ),
+  }
 
   -- new level creation
   local function nextLevel()
@@ -25,7 +39,7 @@ function scene:create( event )
     hallway.x, hallway.y = x,y
 
     -- add an item or enemy
-    local rnd = math.random(2)
+    local rnd = math.random(1)
     if rnd == 1 then 
       alien = monster.new() 
       alien.x, alien.y = x, y
@@ -36,6 +50,8 @@ function scene:create( event )
       crate.x, crate.y = x, y
       sceneGroup:insert(crate)  
       crate:toBack()
+    else
+      -- no item
     end
 
     hallway:toBack()
@@ -51,21 +67,30 @@ function scene:create( event )
       if image == "" then 
       elseif image == "spaceKey.png" and not hallway.moving and not (alien and alien.alive) then
         score:add(1500)
+        audio.play(sounds.key)
         -- I collected the key before the crate, so abandon crate
         if crate and crate.collect then
           crate:explode()
         end      
         nextLevel()      
       elseif image == "spaceGlove.png" or image == "spaceGun.png" then
+        audio.play(sounds.laser)
         if alien and alien.hurt then 
+          audio.play(sounds.hit)                 
           alien:hurt()
           score:add(500)
         end
-      elseif image == "spaceMonster.png" and alien and alien.hurt then
-        hallway:shake()
-        fx.screenFlash({1,0,0})
-        print(heart:damage())
+      elseif image == "spaceMonster.png" then
+        if alien and alien.alive then
+          audio.play(sounds.hit)        
+          hallway:shake()
+          fx.screenFlash({1,0,0})
+          print(heart:damage())
+        else
+          audio.play(sounds.alien)        
+        end
       elseif image == "spaceCrate.png" and crate and crate.collect then
+        audio.play(sounds.select)
         crate:collect()
         score:add(1000)
       else
@@ -124,20 +149,26 @@ function scene:show( event )
   if ( phase == "will" ) then
     Runtime:addEventListener("enterFrame", enterFrame)
   elseif ( phase == "did" ) then
-
+    audio.play(sounds.wind, { loops = -1, fadein = 750, channel = 15 } )
   end
 end
 
 function scene:hide( event )
   local phase = event.phase
   if ( phase == "will" ) then
-
+    audio.fadeOut( { time = 1000 })
   elseif ( phase == "did" ) then
     Runtime:removeEventListener("enterFrame", enterFrame)  
   end
 end
 
 function scene:destroy( event )
+  audio.stop()
+  for s,v in pairs( sounds ) do
+    audio.dispose( v )
+    sounds[s] = nil
+  end
+
   collectgarbage()
 end
 
