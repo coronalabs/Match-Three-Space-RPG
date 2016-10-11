@@ -1,8 +1,14 @@
+--
+-- For more information on build.settings see the Corona SDK Build Guide at:
+-- http://docs.coronalabs.com/guide/distribution/buildSettings/index.html
+--
+
 settings = {
 
---  The build.settings file can be used to set app orientation in relation to the
---  device's physical orientation in space — this includes auto-orientation triggered
---  by the accelerometer if the device is rotated or flipped during runtime.
+	orientation = {
+	default = "portrait",
+		supported = { "portrait", "portraitUpsideDown" }
+	},
 
 	android =
 	{
@@ -11,51 +17,40 @@ settings = {
 			"android.permission.INTERNET",
 		},
 	},
+    
 	iphone =
 	{
 		plist =
 		{
 			UIStatusBarHidden = false,
-			UIPrerenderedIcon = true, -- set to false for "shine" overlay
-			--UIApplicationExitsOnSuspend = true, -- uncomment to quit app on suspend    
+			--UIApplicationExitsOnSuspend = true,  -- Uncomment to quit app on suspend    
 			CFBundleIconFiles =
 			{
-				"sys/icons/Icon.png", 
-				"sys/icons/Icon@2x.png", 
-				"sys/icons/Icon-60.png",
-				"sys/icons/Icon-60@2x.png",
-				"sys/icons/Icon-60@3x.png",
-				"sys/icons/Icon-72.png", 
-				"sys/icons/Icon-72@2x.png",
-				"sys/icons/Icon-76.png",
-				"sys/icons/Icon-76@2x.png",
-				"sys/icons/Icon-167.png",
-				"sys/icons/Icon-Small.png", 
-				"sys/icons/Icon-Small@2x.png",
-				"sys/icons/Icon-Small@3x.png",
-				"sys/icons/Icon-Small-40.png",
-				"sys/icons/Icon-Small-40@2x.png",
-				"sys/icons/Icon-Small-50.png", 
-				"sys/icons/Icon-Small-50@2x.png",
+				"Icon.png", 
+				"Icon@2x.png", 
+				"Icon-60.png",
+				"Icon-60@2x.png",
+				"Icon-60@3x.png",
+				"Icon-72.png", 
+				"Icon-72@2x.png",
+				"Icon-76.png",
+				"Icon-76@2x.png",
+				"Icon-167.png",
+				"Icon-Small.png", 
+				"Icon-Small@2x.png",
+				"Icon-Small@3x.png",
+				"Icon-Small-40.png",
+				"Icon-Small-40@2x.png",
+				"Icon-Small-50.png", 
+				"Icon-Small-50@2x.png",
 			},
 		},
 	},
 
---  "portrait" device in the vertical position with the home button at the bottom
---  "portraitUpsideDown" device in the vertical position with the home button at the top
---  "landscapeRight" device in the horizontal position with the home button at the right
---  "landscapeLeft" device in the horizontal position with the home button at the left
-
-	orientation = {
-		-- Landscape
-    default = "portrait",
-		supported = { "portrait", "portraitUpsideDown"}
-  },
-
-  --  This setting can be used to turned on to disable debug symbol stripping altogether
-  build = {
-    --neverStripDebugInfo = true
-  },
+	-- This setting can be used to turned on to disable debug symbol stripping altogether
+	build = {
+		--neverStripDebugInfo = true
+	},
 
 	window = {
 		titleText = {
@@ -65,30 +60,28 @@ settings = {
 		},
 	},
 
-  plugins =
-  {
+	plugins =
+	{
 
-  },
+	},
 
-  --  Files to be excluded are specified per platform (iphone, android or all) using simple pattern
-  --  matching where * means any string of characters, sometimes including /
-  excludeFiles = {
+	--  Files to be excluded are specified per-platform (iOS, Android, or all) using simple pattern
+	--  matching where * means any string of characters, sometimes including /
+	excludeFiles = {
 
-  -- Exclude all files at paths
-		-- Exclude all Android icon files and .ogg files
+		-- On iOS, exclude all Android icon files and .ogg files
 		iphone = { "Icon-*dpi.png", "*.ogg" },
 
-		-- Exclude iOS "retina" image files and .aac files
+		-- On Android, exclude iOS "retina" image files and .aac files
 		android = { "Icon.png", "*@2x.png", "*.aac" },
 
-		-- Exclude unnecessary assets from OS X desktop apps
+		-- On MacOS, exclude unnecessary assets from desktop apps
 		osx = { "Default*.png", "Icon*.png", "Icon*.ico", "Icon*.icns", "*.aac" },
 
-		-- Exclude unnecessary assets from Win32 desktop apps
+		-- On Windows, exclude unnecessary assets from desktop apps
 		win32 = { "Default*.png", "Icon*.png", "Icon*.ico", "Icon*.icns", "*.aac" },
 
-		-- Exclude all Android icon files and .ogg files
+		-- On tvOS, exclude all Android icon files and .ogg files
 		tvos = { "Icon-*.png", "*.ogg" },
-  },
-  
+	},
 }
