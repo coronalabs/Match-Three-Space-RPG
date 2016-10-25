@@ -85,7 +85,7 @@ function scene:create( event )
           audio.play(sounds.hit)        
           hallway:shake()
           fx.screenFlash({1,0,0})
-          if heart:damage(4) == 0 then
+          if heart:damage(1) == 0 then
             composer.gotoScene("scene.gameover", { effect = "slideDown" })
           end
         else
