@@ -25,7 +25,7 @@ function scene:create( event )
     key = audio.loadSound(  sndDir .. "key.wav" ),
     metal = audio.loadSound( sndDir .. "metal.wav" ),    
     laser = audio.loadSound( sndDir .. "laser.wav" ),
-    select = audio.loadSound( sndDir .. "select.wav" ),
+    beep = audio.loadSound( sndDir .. "select.wav" ),
     horror = audio.loadSound( sndDir .. "loops/horrorloop.ogg"  ),
     wind = audio.loadSound( sndDir .. "loops/spacewind.ogg" ),
   }
@@ -39,7 +39,7 @@ function scene:create( event )
     hallway.x, hallway.y = x,y
 
     -- add an item or enemy
-    local rnd = math.random(1)
+    local rnd = math.random(3)
     if rnd == 1 then 
       alien = monster.new() 
       alien.x, alien.y = x, y
@@ -92,7 +92,7 @@ function scene:create( event )
           audio.play(sounds.alien)        
         end
       elseif image == "spaceCrate.png" and crate and crate.collect then
-        audio.play(sounds.select)
+        audio.play(sounds.beep)
         crate:collect()
         score:add(1000)
       else
