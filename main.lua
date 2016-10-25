@@ -41,4 +41,4 @@ if isSimulator then
 end
 
 -- Go to game screen
-composer.gotoScene( "scene.menu.menu", { params={} } )
+composer.gotoScene( "scene.menu", { params={} } )

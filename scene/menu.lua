@@ -29,7 +29,7 @@ function scene:create( event )
 
   local txt = { parent = sceneGroup,
     x=display.contentCenterX, y=100,
-    text="Game Over",
+    text="Match Three Space RPG",
     font="scene/menu/font/Dosis-Bold.ttf",
     fontSize=68 }
 
@@ -37,7 +37,7 @@ function scene:create( event )
 
   txt = { parent = sceneGroup,
     x=display.contentCenterX, y=220,
-    text="Tap/Click to Restart",
+    text="Tap/Click to Begin",
     font="scene/menu/font/Dosis-Bold.ttf",
     fontSize=52 }
 
@@ -45,7 +45,7 @@ function scene:create( event )
   fx.bounce(help)
 
   function sceneGroup:tap()
-    composer.gotoScene( "scene.game.game", { effect = "slideDown", params = { } })
+    composer.gotoScene( "scene.game", { effect = "slideDown", params = { } })
   end
   sceneGroup:addEventListener("tap")
 end
@@ -62,7 +62,6 @@ function scene:show( event )
   if ( phase == "will" ) then
     Runtime:addEventListener("enterFrame", enterFrame)
   elseif ( phase == "did" ) then
-    composer.removeScene( "scene.game.game" )
     audio.play(music, { loops = -1, fadein = 750, channel = 16 } )
   end
 end
