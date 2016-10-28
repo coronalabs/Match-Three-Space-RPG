@@ -28,7 +28,7 @@ function M.new()
   instance.bar = healthBar.new()
   instance:insert(instance.bar)
   instance.bar.x, instance.bar.y = instance.img.x, instance.img.y - 284
-  instance.alive = true
+  instance.isAlive = true
 
   -- make it breathe
   fx.breath(instance.img, 0.025, 750)
@@ -43,7 +43,7 @@ function M.new()
 
   function instance:die()
     if instance then 
-      instance.alive = false
+      instance.isAlive = false
       local function remove()
         display.remove(instance)
         instance = nil

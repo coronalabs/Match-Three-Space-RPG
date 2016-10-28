@@ -65,7 +65,7 @@ function scene:create( event )
     -- let's get matching
     if phase == "matched" then
       if image == "" then 
-      elseif image == "spaceKey.png" and not hallway.moving and not (alien and alien.alive) then
+      elseif image == "spaceKey.png" and not hallway.moving and not (alien and alien.isAlive) then
         score:add(1500)
         audio.play(sounds.key)
         -- I collected the key before the crate, so abandon crate
@@ -81,7 +81,7 @@ function scene:create( event )
           score:add(500)
         end
       elseif image == "spaceMonster.png" then
-        if alien and alien.alive then
+        if alien and alien.isAlive then
           audio.play(sounds.hit)        
           hallway:shake()
           fx.screenFlash({1,0,0})
