@@ -20,7 +20,7 @@ function scene:create( event )
 
   -- place everything
   moon.anchorY = 1
-  moon.xScale, moon.yScale = 1.5, 1.5    
+  moon.xScale, moon.yScale = 1.0, 1.0    
   field.xScale, field.yScale = 3, 3
   stars.xScale, stars.yScale = 3, 3 
   ship.xScale, ship.yScale = 2, 2  
