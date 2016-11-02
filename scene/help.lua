@@ -4,7 +4,7 @@ local fx = require "com.ponywolf.ponyfx"
 
 -- Variables local to scene
 local scene = composer.newScene()
-local field, moon, ship, stars, info, music
+local field, moon, ship, stars, info, music, help
 
 function scene:create( event )
   local sceneGroup = self.view -- add display objects to this group
@@ -25,24 +25,11 @@ function scene:create( event )
   stars.xScale, stars.yScale = 3, 3 
   ship.xScale, ship.yScale = 2, 2  
 
-  -- title and help text
+  -- title and help
 
-  local txt = { parent = sceneGroup,
-    x=display.contentCenterX, y=100,
-    text="Game Over",
-    font="scene/menu/font/Dosis-Bold.ttf",
-    fontSize=68 }
-
-  local title = display.newText(txt)
-
-  txt = { parent = sceneGroup,
-    x=display.contentCenterX, y=220,
-    text="Tap/Click to Restart",
-    font="scene/menu/font/Dosis-Bold.ttf",
-    fontSize=52 }
-
-  local help = display.newText(txt)
-  fx.bounce(help)
+  help = display.newImage(sceneGroup, "scene/menu/img/help.png", display.contentCenterX, display.contentCenterY)
+  local ratio = (display.contentHeight < display.contentWidth) and display.contentHeight or display.contentWidth
+  help.xScale, help.yScale = 0.92 * ratio / help.width,  0.92 * ratio / help.height   
 
   function sceneGroup:tap()
     composer.gotoScene( "scene.game", { effect = "slideDown", params = { } })
@@ -62,7 +49,6 @@ function scene:show( event )
   if ( phase == "will" ) then
     Runtime:addEventListener("enterFrame", enterFrame)
   elseif ( phase == "did" ) then
-    composer.removeScene( "scene.game" )
     audio.play(music, { loops = -1, fadein = 750, channel = 16 } )
   end
 end

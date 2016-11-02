@@ -45,7 +45,7 @@ function scene:create( event )
   fx.bounce(help)
 
   function sceneGroup:tap()
-    composer.gotoScene( "scene.game", { effect = "slideDown", params = { } })
+    composer.gotoScene( "scene.help", { effect = "slideDown", params = { } })
   end
   sceneGroup:addEventListener("tap")
 end
