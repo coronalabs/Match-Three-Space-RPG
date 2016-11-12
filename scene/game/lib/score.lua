@@ -46,14 +46,16 @@ function M.new(options)
     end
   end
 
+  function score:get() return score.target or 0 end
+
   function score:finalize()
     -- on remove cleanup instance 
     if score and score.timer then timer.cancel(score.timer) end
   end
 
-  score:addEventListener('finalize', finalize)
+  score:addEventListener('finalize')
 
--- return insantnce
+-- return instance
   return score
 end
 

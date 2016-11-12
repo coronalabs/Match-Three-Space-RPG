@@ -53,6 +53,38 @@ function M.screenFlash(color, blendMode, time)
   transition.to(overlay, {alpha = 0, time = time or 500, transition = easing.outQuad, onComplete=destroy})
 end
 
+function M.fadeOut(onComplete, time, delay)
+  local color = color or { 0, 0, 0, 1 }
+  local overlay = display.newRect(
+    display.contentCenterX,
+    display.contentCenterY,
+    display.actualContentWidth,
+    display.actualContentHeight)
+  overlay:setFillColor(unpack(color))
+  overlay.alpha = 0
+  local function destroy()
+    if onComplete then onComplete() end
+    display.remove(overlay)
+  end
+  transition.to(overlay, {alpha = 1, time = time or 500, delay = delay or 0, transition = easing.outQuad, onComplete=destroy})
+end
+
+function M.fadeIn(onComplete, time, delay)
+  local color = color or { 0, 0, 0, 1 }
+  local overlay = display.newRect(
+    display.contentCenterX,
+    display.contentCenterY,
+    display.actualContentWidth,
+    display.actualContentHeight)
+  overlay:setFillColor(unpack(color))
+  overlay.alpha = 1
+  local function destroy()
+    if onComplete then onComplete() end
+    display.remove(overlay)
+  end
+  transition.to(overlay, {alpha = 0, time = time or 500, delay = delay or 1, transition = easing.outQuad, onComplete=destroy})
+end
+
 -- Impact fx function
 
 function M.impact(object, intensity, time)
