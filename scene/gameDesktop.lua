@@ -19,15 +19,15 @@ function scene:create( event )
   -- sounds
   local sndDir = "scene/game/sfx/"
   sounds = {
-    alien = audio.loadSound( sndDir .. "alien.wav" ),
-    beep = audio.loadSound( sndDir .. "beep.wav" ),
-    hit = audio.loadSound(  sndDir .. "hit.wav" ),
-    key = audio.loadSound(  sndDir .. "key.wav" ),
-    metal = audio.loadSound( sndDir .. "metal.wav" ),    
-    laser = audio.loadSound( sndDir .. "laser.wav" ),
-    beep = audio.loadSound( sndDir .. "select.wav" ),
-    horror = audio.loadSound( sndDir .. "loops/horrorloop.ogg"  ),
-    wind = audio.loadSound( sndDir .. "loops/spacewind.ogg" ),
+    alien = audio.loadSound( sndDir .. "alien.mp3" ),
+    beep = audio.loadSound( sndDir .. "beep.mp3" ),
+    hit = audio.loadSound(  sndDir .. "hit.mp3" ),
+    key = audio.loadSound(  sndDir .. "key.mp3" ),
+    metal = audio.loadSound( sndDir .. "metal.mp3" ),    
+    laser = audio.loadSound( sndDir .. "laser.mp3" ),
+    beep = audio.loadSound( sndDir .. "select.mp3" ),
+    horror = audio.loadSound( sndDir .. "loops/horrorloop.mp3"  ),
+    wind = audio.loadSound( sndDir .. "loops/spacewind.mp3" ),
   }
 
   -- new level creation

@@ -6,8 +6,8 @@
 settings = {
 
 	orientation = {
-	default = "landscape",
-		supported = { "landscape"}
+	default = "portrait",
+		supported = { "portrait", "portraitUpsideDown" }
 	},
 
 	android =

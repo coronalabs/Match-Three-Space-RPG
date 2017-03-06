@@ -10,7 +10,7 @@ function scene:create( event )
   local sceneGroup = self.view -- add display objects to this group
 
   -- music
-  music = audio.loadSound("scene/menu/sfx/titletheme.wav")
+  music = audio.loadSound("scene/menu/sfx/titletheme.mp3")
 
   -- load our title sceen
   field = display.newImage(sceneGroup, "scene/menu/img/field.png", display.contentCenterX, display.contentCenterY)
