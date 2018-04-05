@@ -103,27 +103,27 @@ function scene:create( event )
 
   -- create a new First Person Perspective
   hallway = fpp.new() 
-  hallway.x = display.contentCenterX
+  hallway.x = display.contentCenterX/2
 
   -- create a new threeMatch  
-  board = threeMatch.new(matched, { rows = 5 } )
-  board.x = display.contentCenterX
-  board.y = display.contentHeight - (board.contentHeight / 2) - display.screenOriginY - 16
+  board = threeMatch.new(matched, { rows = 6, cols = 5, width = display.contentHeight/6.25, height = display.contentHeight/6.25 } )
+  board.x = display.contentCenterX*1.5 - 16
+  board.y = display.contentHeight/2
 
   -- place the hallway half way up from the 
-  hallway.y = (display.screenOriginY + board.contentBounds.yMin) / 2  
+  hallway.y = display.contentCenterY
 
-  -- black out bottom of screen
-  local mask = display.newRect(sceneGroup, board.x, board.y + 32, display.actualContentWidth, board.contentHeight + 96)
+  -- black out right of screen
+  local mask = display.newRect(sceneGroup, board.x, board.y, board.contentWidth + 32, display.actualContentHeight)
   mask:setFillColor(0,0,0)
 
   -- add our scoring module
   local credits = display.newImageRect(sceneGroup, "scene/game/img/credit.png", 96,96 )  
-  credits.x = display.contentWidth - credits.contentWidth / 2 - 8
+  credits.x = display.contentWidth/2 - credits.contentWidth / 2 - 24
   credits.y = display.screenOriginY + credits.contentHeight / 2 + 8
 
   score = scoring.new()
-  score.x = display.contentWidth - score.contentWidth / 2 - 16 - credits.width
+  score.x = display.contentWidth/2 - score.contentWidth / 2 - 32 - credits.width
   score.y = display.screenOriginY + score.contentHeight / 2 + 16
 
   -- add our hearts module

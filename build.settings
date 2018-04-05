@@ -5,10 +5,11 @@
 
 settings = {
 
-	orientation = {
-	default = "portrait",
-		supported = { "portrait", "portraitUpsideDown" }
-	},
+  orientation = {
+    -- Landscape
+    default = "landscapeRight",
+    supported = { "landscapeRight", "landscapeLeft"}
+  },
 
 	android =
 	{
@@ -17,6 +18,19 @@ settings = {
 			"android.permission.INTERNET",
 		},
 	},
+	
+  window = {
+    titleText = {
+      -- The "default" text will be used if the system is using a language and/or
+      -- country code not defined below. This serves as a fallback mechanism.
+      default = "Match Three Space RPG",
+		},
+    resizable = true,
+		defaultViewWidth = 1280,
+		defaultViewHeight = 720,
+		minViewWidth = 800,
+		minViewHeight = 450,
+  },	
     
 	iphone =
 	{

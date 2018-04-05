@@ -27,7 +27,7 @@ application = {
 -- Content for 1080p scale
 
     width = 800, -- these need to be backward for Lanscape as Corona thinks
-    height = 1280, -- all devices are Portrait by default
+    height = 1200, -- all devices are Portrait by default
 --    width = aspectRatio > 1.5 and 720 or math.ceil( 1200 / aspectRatio ),
 --    height = aspectRatio < 1.5 and 1200 or math.ceil( 720 * aspectRatio ),
 
